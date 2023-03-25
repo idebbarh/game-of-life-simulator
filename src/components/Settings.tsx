@@ -2,12 +2,14 @@ interface SettingsProps {
   clearGrid: () => void;
   startSimulation: () => void;
   endSimulation: () => void;
+  cellsStateTracker: () => void;
 }
 
 function Settings({
   clearGrid,
   startSimulation,
   endSimulation,
+  cellsStateTracker,
 }: SettingsProps) {
   return (
     <div className="w-screen h-[100px] flex flex-wrap items-center justify-center gap-4">
@@ -22,6 +24,12 @@ function Settings({
         onClick={endSimulation}
       >
         End Simulation
+      </button>
+      <button
+        className="w-32 h-10 bg-yellow-500 text-white rounded-md"
+        onClick={cellsStateTracker}
+      >
+        Next Generation
       </button>
       <button
         className="w-32 h-10 bg-gray-500 text-white rounded-md"

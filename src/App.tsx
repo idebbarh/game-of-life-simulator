@@ -94,6 +94,7 @@ function App() {
         clearGrid={clearGrid}
         startSimulation={startSimulation}
         endSimulation={endSimulation}
+        cellsStateTracker={cellsStateTracker}
       />
     </div>
   );

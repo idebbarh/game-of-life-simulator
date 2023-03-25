@@ -7,7 +7,7 @@ function GridCell({ cellState, changeCellState }: GridCellProps) {
     <div
       className={`w-5 h-5 ${
         cellState ? "bg-green-500" : "bg-transparent"
-      } border border-green-500`}
+      } border border-white`}
       onClick={changeCellState}
     ></div>
   );
