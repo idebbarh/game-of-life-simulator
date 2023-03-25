@@ -16,7 +16,9 @@ function Grid({ grid, updateGrid }: GridProps) {
                 <GridCell
                   key={cellIndex}
                   cellState={cell}
-                  changeCellState={() => updateGrid(rowIndex, cellIndex)}
+                  changeCellState={() => {
+                    updateGrid(rowIndex, cellIndex);
+                  }}
                 />
               );
             })}
