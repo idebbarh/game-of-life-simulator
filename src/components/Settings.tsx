@@ -1,8 +1,12 @@
+import patterns from "../data/patterns";
+
 interface SettingsProps {
   clearGrid: () => void;
   startSimulation: () => void;
   endSimulation: () => void;
   cellsStateTracker: () => void;
+  livingCells: number;
+  setPattern: (pattern: string) => void;
 }
 
 function Settings({
@@ -10,6 +14,8 @@ function Settings({
   startSimulation,
   endSimulation,
   cellsStateTracker,
+  livingCells,
+  setPattern,
 }: SettingsProps) {
   return (
     <div className="w-screen h-[100px] flex flex-wrap items-center justify-center gap-4">
@@ -37,6 +43,23 @@ function Settings({
       >
         Clear Grid
       </button>
+      <select
+        className="w-32 h-10 bg-blue-500 text-white rounded-md"
+        onChange={(e) => setPattern(e.target.value)}
+      >
+        <option value="default">Select a pattern</option>
+        {Object.entries(patterns).map(([key, _]) => {
+          return (
+            <option value={key} key={key}>
+              {key}
+            </option>
+          );
+        })}
+      </select>
+
+      <div className="flex flex-wrap items-center justify-center gap-4">
+        <p className="text-black">number of living cells: {livingCells}</p>
+      </div>
     </div>
   );
 }

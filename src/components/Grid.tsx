@@ -2,10 +2,10 @@ import GridCell from "./GridCell";
 
 interface GridProps {
   grid: (0 | 1)[][];
-  updateGrid: (rowIndex: number, cellIndex: number) => void;
+  toggleCellState: (rowIndex: number, cellIndex: number) => void;
 }
 
-function Grid({ grid, updateGrid }: GridProps) {
+function Grid({ grid, toggleCellState }: GridProps) {
   return (
     <div className="w-screen h-[calc(100vh-100px)] bg-grid-bg overflow-auto">
       {grid.map((row, rowIndex) => {
@@ -17,7 +17,7 @@ function Grid({ grid, updateGrid }: GridProps) {
                   key={cellIndex}
                   cellState={cell}
                   changeCellState={() => {
-                    updateGrid(rowIndex, cellIndex);
+                    toggleCellState(rowIndex, cellIndex);
                   }}
                 />
               );

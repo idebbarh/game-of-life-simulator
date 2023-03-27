@@ -5,7 +5,8 @@ import Settings from "./components/Settings";
 import useGrid from "./utils/hooks/useGrid";
 
 function App() {
-  const { grid, updateGrid, clearGrid, numberOfliveCells } = useGrid();
+  const { grid, toggleCellState, clearGrid, numberOfliveCells, setPattern } =
+    useGrid();
   const [intervalId, setIntervalId] = useState<number | null>(null);
   const [gridRef, numberOfliveCellsRef] = [
     useRef<typeof grid>(grid),
@@ -54,11 +55,11 @@ function App() {
         /* Any live cell with fewer than two live neighbors dies (underpopulation). */
         /* Any live cell with more than three live neighbors dies (overpopulation). */
         if (gridRef.current[i][j] && (liveCells < 2 || liveCells > 3)) {
-          updateGrid(i, j);
+          toggleCellState(i, j);
         }
         /* Any dead cell with exactly three live neighbors becomes a live cell (reproduction). */
         if (!gridRef.current[i][j] && liveCells === 3) {
-          updateGrid(i, j);
+          toggleCellState(i, j);
         }
       }
     }
@@ -89,12 +90,14 @@ function App() {
 
   return (
     <div className="App">
-      <Grid grid={grid} updateGrid={updateGrid} />
+      <Grid grid={grid} toggleCellState={toggleCellState} />
       <Settings
         clearGrid={clearGrid}
         startSimulation={startSimulation}
         endSimulation={endSimulation}
         cellsStateTracker={cellsStateTracker}
+        livingCells={numberOfliveCells}
+        setPattern={setPattern}
       />
     </div>
   );
