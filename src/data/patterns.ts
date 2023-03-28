@@ -4,6 +4,7 @@ export interface PatternType {
   [key: string]: number[][];
 }
 const centerX = Math.floor(numberOfColumns / 2);
+
 const centerY = Math.floor(numberOfRows / 2);
 
 const patterns: PatternType = {

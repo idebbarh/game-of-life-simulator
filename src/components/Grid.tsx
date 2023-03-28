@@ -1,3 +1,4 @@
+import { numberOfColumns } from "../data/constants";
 import GridCell from "./GridCell";
 
 interface GridProps {
@@ -7,10 +8,17 @@ interface GridProps {
 
 function Grid({ grid, toggleCellState }: GridProps) {
   return (
-    <div className="w-screen h-[calc(100vh-100px)] bg-grid-bg overflow-auto">
+    <div
+      id="grid"
+      className="w-screen h-[calc(100vh-100px)] bg-grid-bg overflow-auto"
+    >
       {grid.map((row, rowIndex) => {
         return (
-          <div className="flex" key={rowIndex}>
+          <div
+            className="flex"
+            key={rowIndex}
+            style={{ width: `${20 * numberOfColumns}px` }}
+          >
             {row.map((cell, cellIndex) => {
               return (
                 <GridCell
